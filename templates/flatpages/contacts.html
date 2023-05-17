@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+
+{% block idpage %}contacts{% endblock %}
+
+{% block title %}
+{{flatpage.title}}
+{% endblock %}
+
+{% block header %}
+{{ flatpage.title }}
+{% endblock %}
+
+{% block count %}
+<br>
+{% endblock %}
+
+{% block image %}
+{% static 'assets/contacts.jpg' %}
+{% endblock %}
+
+{% block content %}
+{{ flatpage.content }}
+{% endblock %}

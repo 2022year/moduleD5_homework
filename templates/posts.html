@@ -1,0 +1,45 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+{% load censor %}
+
+{% block idpage %}news{% endblock %}
+
+{% block title %}
+Все новости
+{% endblock %}
+
+{% block header %}
+Все новости на текущий момент
+{% endblock %}
+
+{% block count %}
+    {% if is_paginated %}
+        Показано публикаций: {{ posts|length }} из {{ page_obj.paginator.count }}
+    {% else %}
+        Всего публикаций: {{ posts|length }}
+    {% endif %}
+{% endblock %}
+
+{% block image %}
+{% static 'assets/news.jpg' %}
+{% endblock %}
+
+{% block content %}
+{% for post in posts %}
+
+    <h2 class="fw-bolder mb-4 mt-5 news-header">{{ post.title|censor:'*' }}</h2>
+    <p class="text-muted fst-italic mb-2">Дата публикации: {{ post.dateCreated|date:'d-m-Y H:i' }}</p>
+    <div class="post-box">
+    <p class="fs-5 mb-4 post-text">{{ post.text|censor:'*'|truncatechars:50 }}</p>
+    <p class="block-btn"><a class="btn btn-text" href="{% url 'post' post.pk %}">Читать новость</a></p>
+    <p class="block-btn"><a class="btn btn-text" href="{% url 'edit' post.pk %}">Редактировать</a></p>
+    <p class="block-btn"><a class="btn btn-text" href="{% url 'delete' post.pk %}">Удалить</a></p>
+    <hr>
+    </div>
+{% endfor %}
+
+
+<br>
+{% include 'pagination.html' %}
+
+{% endblock %}

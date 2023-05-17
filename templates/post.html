@@ -1,0 +1,36 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+{% load censor %}
+
+{% block idpage %}news{% endblock %}
+
+{% block title %}
+{{ post.title|censor:'*' }}
+{% endblock %}
+
+{% block header %}
+{{ post.title|censor:'*' }}
+{% endblock %}
+
+{% block count %}
+Дата публикации: {{ post.dateCreated|date:'d-m-Y H:i' }}
+{% endblock %}
+
+{% block image %}
+{% static 'assets/new.jpg' %}
+{% endblock %}
+
+{% block content %}
+<div class="post-box">
+    <p class="fs-5 mb-4 post-text box-wrap">{{ post.text|censor:'*' }}</p>
+    <br>
+    <p class="block-btn">
+        <a class="btn btn-text" onclick="javascript:history.back(); return false;">
+            Вернуться к списку новостей
+        </a>
+    </p>
+    <p class="block-btn"><a class="btn btn-text" href="{% url 'edit' post.pk %}">Редактировать</a></p>
+    <p class="block-btn"><a class="btn btn-text" href="{% url 'delete' post.pk %}">Удалить</a></p>
+    </div>
+
+{% endblock content %}

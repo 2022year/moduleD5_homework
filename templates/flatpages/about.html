@@ -1,0 +1,24 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+
+{% block idpage %}about{% endblock %}
+
+{% block title %}
+{{flatpage.title}}
+{% endblock %}
+
+{% block header %}
+{{ flatpage.title }}
+{% endblock %}
+
+{% block count %}
+<br>
+{% endblock %}
+
+{% block image %}
+{% static 'assets/about.jpg' %}
+{% endblock %}
+
+{% block content %}
+{{ flatpage.content }}
+{% endblock %}

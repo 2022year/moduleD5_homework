@@ -1,0 +1,25 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+
+{% block idpage %}home{% endblock %}
+
+{% block title %}
+Главная
+{% endblock %}
+
+{% block header %}
+Сайт новостей
+{% endblock %}
+
+{% block count %}
+<br>
+{% endblock %}
+
+{% block image %}
+{% static 'assets/home.jpg' %}
+{% endblock %}
+
+{% block content %}
+<p class="fs-5 mb-4">Это главная страница сайта новостей <a class="content-link" href="/news/">Новости</a>.</p>
+
+{% endblock %}

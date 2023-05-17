@@ -1,0 +1,36 @@
+{% extends 'flatpages/default.html' %}
+{% load static %}
+{% load censor %}
+
+{% block idpage %}news{% endblock %}
+
+{% block title %}
+Добавление
+{% endblock %}
+
+{% block header %}
+Добавление новой публикации
+{% endblock %}
+
+{% block count %}
+<br>
+{% endblock %}
+
+{% block image %}
+{% static 'assets/new.jpg' %}
+{% endblock %}
+
+{% block form %}
+    <!-- Форма для добавления -->
+    <form method="post" name="add">
+        {% csrf_token %}
+        {{ form }}
+        <div class="btn-form">
+            <input class="btn-btn" type="submit" value="Сохранить пост">
+            <input class="btn-btn" type="button" onclick="history.back();" value="Отмена">
+        </div>
+    </form>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
